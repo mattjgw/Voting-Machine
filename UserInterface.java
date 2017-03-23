@@ -11,9 +11,12 @@ public class UserInterface extends JFrame{
 	private JComboBox parties;
 	private JLabel candidatePicture;
 	private static String[] picture = {"conservative.png", "green.png", "liberal.png", "NDP.png"};
+	private static String[] partyName = {"Conservative", "Green", "Liberal", "NDP"};
+	
 	private Icon [] symbols = {new ImageIcon(getClass().getResource(picture[0])), new ImageIcon(getClass().getResource(picture[1])), 
 			new ImageIcon(getClass().getResource(picture[2])), new ImageIcon(getClass().getResource(picture[3]))};
 	private JButton vote;
+	private JButton getResults;
 	private static int[] voteCount = new int [4];
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public UserInterface()
@@ -21,7 +24,7 @@ public class UserInterface extends JFrame{
 		super("Voting Machine");
 		setLayout(new FlowLayout());
 		
-		parties = new JComboBox(picture);
+		parties = new JComboBox(partyName);
 		parties.addItemListener(
 				new ItemListener()
 				{
@@ -44,6 +47,27 @@ public class UserInterface extends JFrame{
 					}
 				}
 				);
+		
+		getResults = new JButton("Get Results");
+		getResults.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent event)
+					{
+						JOptionPane.showMessageDialog(null, showResults());
+					}
+
+					private String showResults() {
+						String message;
+						for (int i = 0; i < picture.length; i++) {
+							
+						}
+						return null;
+						
+					}
+				}
+				);
+		
 		
 		add(vote);
 		add(parties);
