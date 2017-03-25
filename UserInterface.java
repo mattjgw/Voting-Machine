@@ -43,7 +43,6 @@ public class UserInterface extends JFrame{
 					public void actionPerformed(ActionEvent event)
 					{
 						voteCount[parties.getSelectedIndex()]++;
-						System.out.println(voteCount[parties.getSelectedIndex()]);
 					}
 				}
 				);
@@ -58,11 +57,11 @@ public class UserInterface extends JFrame{
 					}
 
 					private String showResults() {
-						String message;
-						for (int i = 0; i < picture.length; i++) {
-							
+						String message = "";
+						for (int i = 0; i < partyName.length; i++) {
+							message+=partyName[i]+": "+voteCount[i]+"\n";
 						}
-						return null;
+						return message;
 						
 					}
 				}
@@ -70,8 +69,11 @@ public class UserInterface extends JFrame{
 		
 		
 		add(vote);
+		add(getResults);
 		add(parties);
 		candidatePicture = new JLabel(symbols[0]);
+		candidatePicture.setAlignmentX(CENTER_ALIGNMENT);
+		candidatePicture.setAlignmentY(CENTER_ALIGNMENT);
 		add(candidatePicture);
 	}
 
