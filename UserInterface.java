@@ -53,7 +53,17 @@ public class UserInterface extends JFrame{
 				{
 					public void actionPerformed(ActionEvent event)
 					{
-						JOptionPane.showMessageDialog(null, showResults());
+						String password = null;
+						password = JOptionPane.showInputDialog(null, "Enter the password:");
+						if(password.equalsIgnoreCase("password"))
+						{
+							JOptionPane.showMessageDialog(null, showResults());	
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "The password you entered is incorrect");
+						}
+						
 					}
 
 					private String showResults() {
