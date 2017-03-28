@@ -42,7 +42,16 @@ public class UserInterface extends JFrame{
 				{
 					public void actionPerformed(ActionEvent event)
 					{
-						voteCount[parties.getSelectedIndex()]++;
+						Object[] options = { "Yes", "No" };
+						int yes = 0;
+						yes = JOptionPane.showOptionDialog(null, "Are you sure you want to vote?", " ",
+						JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+						
+						if(yes == 0)
+						{
+							voteCount[parties.getSelectedIndex()]++;
+						}
+						
 					}
 				}
 				);
@@ -55,6 +64,7 @@ public class UserInterface extends JFrame{
 					{
 						String password = null;
 						password = JOptionPane.showInputDialog(null, "Enter the password:");
+		
 						if(password.equalsIgnoreCase("password"))
 						{
 							JOptionPane.showMessageDialog(null, showResults());	
@@ -76,8 +86,7 @@ public class UserInterface extends JFrame{
 					}
 				}
 				);
-		
-		
+			
 		add(vote);
 		add(getResults);
 		add(parties);
