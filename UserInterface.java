@@ -12,12 +12,13 @@ public class UserInterface extends JFrame{
 	private JLabel candidatePicture;
 	private static String[] picture = {"conservative.png", "green.png", "liberal.png", "NDP.png"};
 	private static String[] partyName = {"Conservative", "Green", "Liberal", "NDP"};
-	
 	private Icon [] symbols = {new ImageIcon(getClass().getResource(picture[0])), new ImageIcon(getClass().getResource(picture[1])), 
 			new ImageIcon(getClass().getResource(picture[2])), new ImageIcon(getClass().getResource(picture[3]))};
 	private JButton vote;
 	private JButton getResults;
+	private JButton newElection;
 	private static int[] voteCount = new int [4];
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public UserInterface()
 	{
@@ -86,13 +87,26 @@ public class UserInterface extends JFrame{
 					}
 				}
 				);
+		newElection = new JButton("Start new election");
+		newElection.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent event)
+					{
+						for(int i = 0; i < voteCount.length; i++)
+						{
+							voteCount[i] = 0;
+						}
+						
+					}
+				}
+				);
 			
 		add(vote);
 		add(getResults);
+		add(newElection);
 		add(parties);
 		candidatePicture = new JLabel(symbols[0]);
-		candidatePicture.setAlignmentX(CENTER_ALIGNMENT);
-		candidatePicture.setAlignmentY(CENTER_ALIGNMENT);
 		add(candidatePicture);
 	}
 
