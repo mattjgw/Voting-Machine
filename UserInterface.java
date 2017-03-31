@@ -93,11 +93,18 @@ public class UserInterface extends JFrame{
 				{
 					public void actionPerformed(ActionEvent event)
 					{
-						for(int i = 0; i < voteCount.length; i++)
-						{
-							voteCount[i] = 0;
-						}
+						Object[] options = { "Yes", "No" };
+						int yes = 0;
+						yes = JOptionPane.showOptionDialog(null, "Are you sure you want to start a new election?", " ",
+						JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 						
+						if(yes == 0)
+						{
+							for(int i = 0; i < voteCount.length; i++)
+							{
+								voteCount[i] = 0;
+							}
+						}
 					}
 				}
 				);
