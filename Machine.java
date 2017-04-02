@@ -10,6 +10,7 @@ public class Machine {
 		vote.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		vote.setSize(350, 350);
 		vote.setResizable(false);
+		vote.setLocationRelativeTo(null);
 		vote.setVisible(true);
 
 	}
