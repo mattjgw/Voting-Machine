@@ -93,18 +93,21 @@ public class UserInterface extends JFrame{
 				{
 					public void actionPerformed(ActionEvent event)
 					{
-						Object[] options = { "Yes", "No" };
-						int yes = 0;
-						yes = JOptionPane.showOptionDialog(null, "Are you sure you want to start a new election?", " ",
-						JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-						
-						if(yes == 0)
+						String password = null;
+						password = JOptionPane.showInputDialog(null, "Enter the password:");
+		
+						if(password.equalsIgnoreCase("password"))
 						{
 							for(int i = 0; i < voteCount.length; i++)
-							{
-								voteCount[i] = 0;
-							}
+								{
+									voteCount[i] = 0;
+								}
 						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "The password you entered is incorrect");
+						}
+
 					}
 				}
 				);
