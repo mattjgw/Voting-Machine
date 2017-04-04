@@ -18,6 +18,7 @@ public class UserInterface extends JFrame{
 	private JButton getResults;
 	private JButton newElection;
 	private static int[] voteCount = new int [4];
+	private String password = "password";
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public UserInterface()
@@ -66,7 +67,7 @@ public class UserInterface extends JFrame{
 						String password = null;
 						password = JOptionPane.showInputDialog(null, "Enter the password:");
 		
-						if(password.equalsIgnoreCase("password"))
+						if(password.equalsIgnoreCase(password))
 						{
 							JOptionPane.showMessageDialog(null, showResults());	
 						}
@@ -96,7 +97,7 @@ public class UserInterface extends JFrame{
 						String password = null;
 						password = JOptionPane.showInputDialog(null, "Enter the password:");
 		
-						if(password.equalsIgnoreCase("password"))
+						if(password.equalsIgnoreCase(password))
 						{
 							for(int i = 0; i < voteCount.length; i++)
 								{
