@@ -17,6 +17,7 @@ public class UserInterface extends JFrame{
 	private JButton vote;
 	private JButton getResults;
 	private JButton newElection;
+	private JButton resetPassword;
 	private static int[] voteCount = new int [4];
 	private String password = "password";
 	
@@ -56,7 +57,7 @@ public class UserInterface extends JFrame{
 						
 					}
 				}
-				);
+			);
 		
 		getResults = new JButton("Get Results");
 		getResults.addActionListener(
@@ -64,10 +65,10 @@ public class UserInterface extends JFrame{
 				{
 					public void actionPerformed(ActionEvent event)
 					{
-						String password = null;
-						password = JOptionPane.showInputDialog(null, "Enter the password:");
+						String tempPassword = null;
+						tempPassword = JOptionPane.showInputDialog(null, "Enter the password:");
 		
-						if(password.equalsIgnoreCase(password))
+						if(tempPassword.equalsIgnoreCase(password))
 						{
 							JOptionPane.showMessageDialog(null, showResults());	
 						}
@@ -87,22 +88,23 @@ public class UserInterface extends JFrame{
 						
 					}
 				}
-				);
+			);
+		
 		newElection = new JButton("Start new election");
 		newElection.addActionListener(
 				new ActionListener()
 				{
 					public void actionPerformed(ActionEvent event)
 					{
-						String password = null;
-						password = JOptionPane.showInputDialog(null, "Enter the password:");
+						String tempPassword = null;
+						tempPassword = JOptionPane.showInputDialog(null, "Enter the password:");
 		
-						if(password.equalsIgnoreCase(password))
+						if(tempPassword.equalsIgnoreCase(password))
 						{
 							for(int i = 0; i < voteCount.length; i++)
-								{
-									voteCount[i] = 0;
-								}
+							{
+								voteCount[i] = 0;
+							}
 						}
 						else
 						{
@@ -111,12 +113,35 @@ public class UserInterface extends JFrame{
 
 					}
 				}
-				);
+			);
+		
+		resetPassword = new JButton("Reset Password");
+		resetPassword.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent event)
+					{
+						String tempPassword = null;
+						tempPassword = JOptionPane.showInputDialog(null, "Enter the old password:");
+		
+						if(tempPassword.equalsIgnoreCase(password))
+						{
+							password = JOptionPane.showInputDialog(null, "Enter the new password");
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "The password you entered is incorrect");
+						}
+
+					}
+				}
+			);
 			
 		add(vote);
 		add(getResults);
 		add(newElection);
 		add(parties);
+		add(resetPassword);
 		candidatePicture = new JLabel(symbols[0]);
 		add(candidatePicture);
 	}

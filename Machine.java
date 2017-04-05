@@ -8,7 +8,7 @@ public class Machine {
 		
 		UserInterface vote = new UserInterface();
 		vote.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		vote.setSize(350, 350);
+		vote.setSize(400, 400);
 		vote.setResizable(false);
 		vote.setLocationRelativeTo(null);
 		vote.setVisible(true);
