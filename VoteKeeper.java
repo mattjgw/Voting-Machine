@@ -11,7 +11,7 @@ public class VoteKeeper {
 		path = "Election Information";
 	}
 	
-	public void Record(int x) throws IOException
+	public void record(int x) throws IOException
 	{
 		FileWriter file = new FileWriter(path, true);
 		PrintWriter write = new PrintWriter(file);

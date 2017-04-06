@@ -59,7 +59,7 @@ public class UserInterface extends JFrame{
 							voteCount[parties.getSelectedIndex()]++;
 							try 
 							{
-								scoreKeeper.Record(voteCount[parties.getSelectedIndex()]);
+								scoreKeeper.record(voteCount[parties.getSelectedIndex()]);
 							} 
 							
 							catch (IOException e) 
