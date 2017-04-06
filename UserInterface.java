@@ -2,6 +2,8 @@ package votingMachine;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -20,6 +22,8 @@ public class UserInterface extends JFrame{
 	private JButton resetPassword;
 	private static int[] voteCount = new int [4];
 	private String password = "password";
+	private VoteKeeper scoreKeeper = new VoteKeeper();
+	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public UserInterface()
@@ -53,6 +57,15 @@ public class UserInterface extends JFrame{
 						if(yes == 0)
 						{
 							voteCount[parties.getSelectedIndex()]++;
+							try 
+							{
+								scoreKeeper.Record(voteCount[parties.getSelectedIndex()]);
+							} 
+							
+							catch (IOException e) 
+							{
+								e.printStackTrace();
+							}
 						}
 						
 					}
