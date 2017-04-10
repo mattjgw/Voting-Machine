@@ -32,6 +32,11 @@ public class UserInterface extends JFrame{
 		
 		scoreKeeper = new VoteKeeper();
 		
+		for(int i = 0; i < voteCount.length; i++)
+		{
+			voteCount[i]=scoreKeeper.remember(i);
+		}
+		
 		parties = new JComboBox(partyName);
 		parties.addItemListener(
 				new ItemListener()
