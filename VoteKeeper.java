@@ -7,15 +7,13 @@ public class VoteKeeper{
 	
 	private String path;
 	private Scanner input;
-	@SuppressWarnings("unused")
-	private FileWriter readFile;
-	private FileWriter writeFile;
+	private FileWriter file;
 	private int [] voteCount = new int[4];
 	
 	public VoteKeeper() throws IOException
 	{
 		path = "Election Information";
-		readFile = new FileWriter(path, true);
+		file = new FileWriter(path, true);
 		input = new Scanner(new File(path));
 		for(int i = 0; i < voteCount.length; i++)
 		{
@@ -28,7 +26,6 @@ public class VoteKeeper{
 				voteCount[i] = 0;
 			}
 		}
-		writeFile = new FileWriter(path, false);
 	}
 	
 	public void count(int x)
@@ -38,12 +35,21 @@ public class VoteKeeper{
 
 	public void record() throws IOException
 	{
-		PrintWriter write = new PrintWriter(writeFile);
-		for (int i = 0; i < voteCount.length; i++) 
+		try
 		{
-			write.print(voteCount[i] + " ");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+			for (int i = 0; i < voteCount.length; i++) 
+			{
+				writer.write(voteCount[i] + " ");
+			}
+			System.out.println("Written");
+			writer.close();
 		}
-		write.close();
+		catch(IOException e)
+		{
+			e.getStackTrace();
+		}
+		
 	}
 	
 	public int remember(int i)
@@ -57,7 +63,6 @@ public class VoteKeeper{
 			System.out.println("Error");
 			return 0;
 		}
-		
 	}
 	
 	public void newElection()
@@ -66,6 +71,7 @@ public class VoteKeeper{
 		{
 			voteCount[i] = 0;
 		}
+		System.out.println("Executed");
 	}
 
 }
