@@ -7,6 +7,7 @@ public class VoteKeeper{
 	
 	private String path;
 	private Scanner input;
+	@SuppressWarnings("unused")
 	private FileWriter file;
 	private int [] voteCount = new int[4];
 	

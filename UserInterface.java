@@ -22,15 +22,14 @@ public class UserInterface extends JFrame{
 	private JButton resetPassword;
 	private static int[] voteCount = new int [4];
 	private String password = "password";
-	private VoteKeeper scoreKeeper;
+	private VoteKeeper scoreKeeper = new VoteKeeper();
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public UserInterface() throws IOException
 	{
 		super("Voting Machine");
-		setLayout(new FlowLayout());
+		setLayout(new FlowLayout());	
 		
-		scoreKeeper = new VoteKeeper();
 		for(int i = 0; i < voteCount.length; i++)
 		{
 			voteCount[i]=scoreKeeper.remember(i);
