@@ -31,11 +31,11 @@ public class UserInterface extends JFrame{
 		setLayout(new FlowLayout());
 		
 		scoreKeeper = new VoteKeeper();
-		
 		for(int i = 0; i < voteCount.length; i++)
 		{
 			voteCount[i]=scoreKeeper.remember(i);
 		}
+		scoreKeeper.record();
 		
 		parties = new JComboBox(partyName);
 		parties.addItemListener(
@@ -65,7 +65,8 @@ public class UserInterface extends JFrame{
 							voteCount[parties.getSelectedIndex()]++;
 							try 
 							{
-								scoreKeeper.record(voteCount[parties.getSelectedIndex()]);
+								scoreKeeper.count(parties.getSelectedIndex());
+								scoreKeeper.record();
 							} 
 							
 							catch (IOException e) 
@@ -123,6 +124,12 @@ public class UserInterface extends JFrame{
 							for(int i = 0; i < voteCount.length; i++)
 							{
 								voteCount[i] = 0;
+								scoreKeeper.newElection();
+								try {
+									scoreKeeper.record();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
 							}
 						}
 						else
