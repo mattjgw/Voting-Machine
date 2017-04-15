@@ -44,6 +44,7 @@ public class VoteKeeper{
 				writer.write(voteCount[i] + " ");
 			}
 			System.out.println("Written");
+			writer.flush();
 			writer.close();
 		}
 		catch(IOException e)
