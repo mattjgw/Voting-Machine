@@ -25,8 +25,15 @@ public class PasswordKeeper {
 		else
 		{
 			password = "password";
-		}
-		
+		}	
+	}
+	
+	public PasswordKeeper(String p) throws IOException
+	{
+		path = "Election Information";
+		file = new FileWriter(path, true);
+		input = new Scanner(new File(path));
+		password = p;
 	}
 
 	public void storePassword() throws IOException
