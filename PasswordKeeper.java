@@ -15,7 +15,7 @@ public class PasswordKeeper {
 	
 	public PasswordKeeper() throws IOException
 	{
-		path = "Election Information";
+		path = "Password File";
 		file = new FileWriter(path, true);
 		input = new Scanner(new File(path));
 		if(input.hasNext())
