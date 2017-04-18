@@ -21,8 +21,8 @@ public class UserInterface extends JFrame{
 	private JButton newElection;
 	private JButton resetPassword;
 	private static int[] voteCount = new int [4];
-	private String password = "password";
 	private VoteKeeper scoreKeeper = new VoteKeeper();
+	private PasswordKeeper password = new PasswordKeeper();
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public UserInterface() throws IOException
@@ -87,7 +87,7 @@ public class UserInterface extends JFrame{
 						String tempPassword = null;
 						tempPassword = JOptionPane.showInputDialog(null, "Enter the password:");
 		
-						if(tempPassword.equalsIgnoreCase(password))
+						if(tempPassword.equalsIgnoreCase(password.getPassword()))
 						{
 							JOptionPane.showMessageDialog(null, showResults());	
 						}
@@ -118,7 +118,7 @@ public class UserInterface extends JFrame{
 						String tempPassword = null;
 						tempPassword = JOptionPane.showInputDialog(null, "Enter the password:");
 		
-						if(tempPassword.equalsIgnoreCase(password))
+						if(tempPassword.equalsIgnoreCase(password.getPassword()))
 						{
 							for(int i = 0; i < voteCount.length; i++)
 							{
@@ -149,9 +149,16 @@ public class UserInterface extends JFrame{
 						String tempPassword = null;
 						tempPassword = JOptionPane.showInputDialog(null, "Enter the old password:");
 		
-						if(tempPassword.equalsIgnoreCase(password))
+						if(tempPassword.equalsIgnoreCase(password.getPassword()))
 						{
-							password = JOptionPane.showInputDialog(null, "Enter the new password");
+							tempPassword = JOptionPane.showInputDialog(null, "Enter the new password");
+							password.changePassword(tempPassword);
+							try {
+								password.store();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
 						else
 						{
