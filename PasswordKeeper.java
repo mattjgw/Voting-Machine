@@ -36,7 +36,7 @@ public class PasswordKeeper {
 		password = p;
 	}
 
-	public void storePassword() throws IOException
+	public void store() throws IOException
 	{
 		try
 		{
