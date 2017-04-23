@@ -21,7 +21,7 @@ public class PasswordKeeper {
 		
 		if(input.hasNext())
 		{
-			password = decript();
+			password = decrypt();
 			System.out.println(password);
 		}
 		else
@@ -30,18 +30,18 @@ public class PasswordKeeper {
 		}	
 	}
 	
-	private String decript() {
-		String encripted = input.nextLine();
-		String decripted = "";
-		int originalLength = encripted.length();
+	private String decrypt() {
+		String encypted = input.nextLine();
+		String decrypted = "";
+		int originalLength = encypted.length();
 		char tempChar;
 		for(int i = 0; i < originalLength; i++)
 		{
-			tempChar = encripted.charAt(i);
+			tempChar = encypted.charAt(i);
 			tempChar-=100;
-			decripted+=tempChar;
+			decrypted+=tempChar;
 		}
-		return decripted;
+		return decrypted;
 	}
 
 	public PasswordKeeper(String p) throws IOException
@@ -57,7 +57,7 @@ public class PasswordKeeper {
 		try
 		{
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-			writer.write(encript(password));
+			writer.write(encrypt(password));
 			System.out.println("Written");
 			writer.flush();
 			writer.close();
@@ -68,7 +68,7 @@ public class PasswordKeeper {
 		}
 	}
 	
-	private String encript(String p) {
+	private String encrypt(String p) {
 		String encripted = "";
 		char tempChar;
 		for(int i = 0; i < p.length(); i++)
