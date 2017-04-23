@@ -15,12 +15,14 @@ public class PasswordKeeper {
 	
 	public PasswordKeeper() throws IOException
 	{
-		path = "Password File";
+		path = "Password.txt";
 		file = new FileWriter(path, true);
 		input = new Scanner(new File(path));
+		
 		if(input.hasNext())
 		{
-			password = input.next();
+			password = decript();
+			System.out.println(password);
 		}
 		else
 		{
@@ -28,6 +30,20 @@ public class PasswordKeeper {
 		}	
 	}
 	
+	private String decript() {
+		String encripted = input.nextLine();
+		String decripted = "";
+		int originalLength = encripted.length();
+		char tempChar;
+		for(int i = 0; i < originalLength; i++)
+		{
+			tempChar = encripted.charAt(i);
+			tempChar-=100;
+			decripted+=tempChar;
+		}
+		return decripted;
+	}
+
 	public PasswordKeeper(String p) throws IOException
 	{
 		path = "Election Information";
@@ -41,7 +57,7 @@ public class PasswordKeeper {
 		try
 		{
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-			writer.write(password);
+			writer.write(encript(password));
 			System.out.println("Written");
 			writer.flush();
 			writer.close();
@@ -52,6 +68,18 @@ public class PasswordKeeper {
 		}
 	}
 	
+	private String encript(String p) {
+		String encripted = "";
+		char tempChar;
+		for(int i = 0; i < p.length(); i++)
+		{
+			tempChar = p.charAt(i);
+			tempChar+=100;
+			encripted+=tempChar;
+		}
+		return encripted;
+	}
+
 	public void changePassword(String p)
 	{
 		password = p;
