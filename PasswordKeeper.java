@@ -22,7 +22,6 @@ public class PasswordKeeper {
 		if(input.hasNext())
 		{
 			password = decrypt();
-			System.out.println(password);
 		}
 		else
 		{
