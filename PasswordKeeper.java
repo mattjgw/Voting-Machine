@@ -86,6 +86,11 @@ public class PasswordKeeper {
 		used = true;
 	}
 	
+	public boolean used()
+	{
+		return used;
+	}
+	
 	public String getPassword()
 	{
 		return password;
