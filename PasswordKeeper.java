@@ -12,6 +12,7 @@ public class PasswordKeeper {
 	@SuppressWarnings("unused")
 	private FileWriter file;
 	private String password;
+	private boolean used = false;
 	
 	public PasswordKeeper() throws IOException
 	{
@@ -82,6 +83,7 @@ public class PasswordKeeper {
 	public void changePassword(String p)
 	{
 		password = p;
+		used = true;
 	}
 	
 	public String getPassword()
