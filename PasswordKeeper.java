@@ -58,7 +58,6 @@ public class PasswordKeeper {
 		{
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 			writer.write(encrypt(password));
-			System.out.println("Written");
 			writer.flush();
 			writer.close();
 		}
