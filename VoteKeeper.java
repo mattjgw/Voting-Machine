@@ -13,7 +13,7 @@ public class VoteKeeper{
 	
 	public VoteKeeper() throws IOException
 	{
-		path = "Election Information";
+		path = "Election Information.txt";
 		file = new FileWriter(path, true);
 		input = new Scanner(new File(path));
 		for(int i = 0; i < voteCount.length; i++)
@@ -73,7 +73,6 @@ public class VoteKeeper{
 		{
 			voteCount[i] = 0;
 		}
-		System.out.println("Executed");
 	}
 
 }
