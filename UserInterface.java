@@ -3,7 +3,6 @@ package votingMachine;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -28,7 +27,7 @@ public class UserInterface extends JFrame{
 	public UserInterface() throws IOException
 	{
 		super("Voting Machine");
-		setLayout(new FlowLayout());	
+		setLayout(new FlowLayout());
 		
 		for(int i = 0; i < voteCount.length; i++)
 		{
@@ -139,8 +138,16 @@ public class UserInterface extends JFrame{
 					}
 				}
 			);
+		if(password.used())
+		{
+			resetPassword = new JButton("Set Password");
+		}
 		
-		resetPassword = new JButton("Reset Password");
+		else
+		{
+			resetPassword = new JButton("Reset Password");
+		}
+		
 		resetPassword.addActionListener(
 				new ActionListener()
 				{
