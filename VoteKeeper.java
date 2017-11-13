@@ -18,25 +18,19 @@ import javax.crypto.spec.PBEParameterSpec;
 
 public class VoteKeeper{
 	
-	private String path;
-	private Scanner input;
-	@SuppressWarnings("unused")
-	private FileWriter file;
+	private String path = "Election Information.txt";
 	private int [] voteCount = new int[4];
 	
 	public VoteKeeper() throws IOException
 	{
-		path = "Election Information.txt";
-		file = new FileWriter(path, true);
-		input = new Scanner(new File(path));
 		decrypt(voteCount);
 	}
 	
 	private void decrypt(int[] voteCount) {
-		Cipher cipher2 = getCipher(Cipher.DECRYPT_MODE, "Election Information.txt");
+		Cipher cipher2 = getCipher(Cipher.DECRYPT_MODE, path);
 		
 		try {
-			DataInputStream input = new DataInputStream(new CipherInputStream(new FileInputStream(new File("Election Information.txt")), cipher2));
+			DataInputStream input = new DataInputStream(new CipherInputStream(new FileInputStream(new File(path)), cipher2));
 			for (int i = 0; i < voteCount.length; i++)
 			{
 				voteCount[i] = input.read();
@@ -59,9 +53,9 @@ public class VoteKeeper{
 
 	public void record(int[] voteCount) throws IOException
 	{
-		Cipher cipher = getCipher(Cipher.ENCRYPT_MODE, "Election Information.txt");
+		Cipher cipher = getCipher(Cipher.ENCRYPT_MODE, path);
 		try {
-			DataOutputStream output = new DataOutputStream(new CipherOutputStream(new FileOutputStream(new File("Election Information.txt")), cipher));
+			DataOutputStream output = new DataOutputStream(new CipherOutputStream(new FileOutputStream(new File(path)), cipher));
 			for (int i = 0; i < voteCount.length; i++)
 			{
 				output.write(voteCount[i]);

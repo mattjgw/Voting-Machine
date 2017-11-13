@@ -1,7 +1,6 @@
 package votingMachine;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -14,7 +13,6 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Random;
-import java.util.Scanner;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -26,34 +24,25 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
 public class PasswordKeeper {
-	private String path;
-	@SuppressWarnings("unused")
-	private Scanner input;
-	@SuppressWarnings("unused")
-	private FileWriter file;
+	
+	private String path = "Password.txt";
 	private String password;
 	private boolean used = false;
 	
 	public PasswordKeeper() throws IOException
 	{
-		path = "Password.txt";
-		file = new FileWriter(path, true);
-		input = new Scanner(new File(path));
 		password = decrypt();
 	}
 	
 	public PasswordKeeper(String p) throws IOException
 	{
-		path = "Password.txt";
-		file = new FileWriter(path, true);
-		input = new Scanner(new File(path));
 		password = p;
 	}
 	
 	private String decrypt() {
-		Cipher cipher = getCipher(Cipher.DECRYPT_MODE, "Password.txt");
+		Cipher cipher = getCipher(Cipher.DECRYPT_MODE, path);
 		try {
-			DataInputStream input = new DataInputStream(new CipherInputStream(new FileInputStream(new File("Password.txt")), cipher));
+			DataInputStream input = new DataInputStream(new CipherInputStream(new FileInputStream(new File(path)), cipher));
 			String password = input.readUTF();
 			input.close();
 			return password;
@@ -71,9 +60,9 @@ public class PasswordKeeper {
 	}
 	
 	private String encrypt(String p) {
-		Cipher cipher = getCipher(Cipher.ENCRYPT_MODE, "Password.txt");
+		Cipher cipher = getCipher(Cipher.ENCRYPT_MODE, path);
 		try {
-			DataOutputStream output = new DataOutputStream(new CipherOutputStream(new FileOutputStream(new File("Password.txt")), cipher));
+			DataOutputStream output = new DataOutputStream(new CipherOutputStream(new FileOutputStream(new File(path)), cipher));
 			output.writeUTF(p);
 			output.flush();
 			output.close();
