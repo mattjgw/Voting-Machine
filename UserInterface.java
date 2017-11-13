@@ -33,7 +33,7 @@ public class UserInterface extends JFrame{
 		{
 			voteCount[i]=scoreKeeper.remember(i);
 		}
-		scoreKeeper.record();
+		scoreKeeper.record(voteCount);
 		
 		parties = new JComboBox(partyName);
 		parties.addItemListener(
@@ -64,7 +64,7 @@ public class UserInterface extends JFrame{
 							try 
 							{
 								scoreKeeper.count(parties.getSelectedIndex());
-								scoreKeeper.record();
+								scoreKeeper.record(voteCount);
 							} 
 							
 							catch (IOException e) 
@@ -124,7 +124,7 @@ public class UserInterface extends JFrame{
 								voteCount[i] = 0;
 								scoreKeeper.newElection();
 								try {
-									scoreKeeper.record();
+									scoreKeeper.record(voteCount);
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
@@ -163,7 +163,6 @@ public class UserInterface extends JFrame{
 							try {
 								password.store();
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}

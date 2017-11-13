@@ -13,7 +13,7 @@ public class Machine {
 		vote.setSize(400, 350);
 		vote.setResizable(true);
 		vote.setLocationRelativeTo(null);
-		vote.setVisible(true);
+		vote.setVisible(true);	
 	}
 
 }
